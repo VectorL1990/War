@@ -12,6 +12,8 @@ public class MatchManager : MonoBehaviour
     //Team_2 players
     public Player[] Team2Players;
 
+    public Point[] AllPoints;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,14 @@ public class MatchManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void UpdatePhysCalculate()
+    {
+        for (int i = 0; i < AllPoints.Length; i++)
+        {
+            
+        }
     }
 
     WinFlag JudgeWin()

@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class LaserWall : MonoBehaviour
 {
-    //Hp
-    public float Hp = 0;
-
-    //Flag indicated whether player is dead
-    public bool isDead = false;
+    //Transform of facility
+    public Transform FacilityTransform;
 
     // Start is called before the first frame update
     void Start()
@@ -18,11 +15,6 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
-    }
-
-    void Shoot()
     {
         
     }
