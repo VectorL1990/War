@@ -24,10 +24,10 @@ public class MathCalculator : MonoBehaviour
 
     public bool IsPointInRectDefinedbyTwoPoints(FixVector2 Pt1, FixVector2 Pt2, FixVector2 Pt3)
     {
-        Fix64 MinX = 0;
-        Fix64 MaxX = 0;
-        Fix64 MinY = 0;
-        Fix64 MaxY = 0;
+        Fix64 MinX = (Fix64)0;
+        Fix64 MaxX = (Fix64)0;
+        Fix64 MinY = (Fix64)0;
+        Fix64 MaxY = (Fix64)0;
         if (Pt1.x >= Pt2.x)
         {
             MinX = Pt2.x;
@@ -61,28 +61,28 @@ public class MathCalculator : MonoBehaviour
 
     public void GetReflectDirWithDirAndBaseLine(FixVector3 OriginDir, FixVector2 NormalVector, ref FixVector3 ReflectDir)
     {
-        FixVector2 DotProductX = OriginDir.x * NormalVector.x;
-        FixVector2 DotProductY = OriginDir.y * NormalVector.y;
+        Fix64 DotProductX = OriginDir.x * NormalVector.x;
+        Fix64 DotProductY = OriginDir.y * NormalVector.y;
         NormalVector.Normalize();
-        ReflectDir.x = OriginDir.x - NormalVector.x*DotProductX*2;
-        ReflectDir.y = OriginDir.y - NormalVector.y*DotProductY*2;
+        ReflectDir.x = OriginDir.x - NormalVector.x*DotProductX*(Fix64)2;
+        ReflectDir.y = OriginDir.y - NormalVector.y*DotProductY*(Fix64)2;
     }
 
-    public bool IsSegmentsInterscet(FixVector2 Pt1, FixVector2 Pt2, FixVector2 Pt3, FixVector2 Pt3)
+    public bool IsSegmentsInterscet(FixVector2 Pt1, FixVector2 Pt2, FixVector2 Pt3, FixVector2 Pt4)
     {
         Fix64 DirPt3toLine1 = GetDirectionofPointtoSegment(Pt1, Pt2, Pt3);
         Fix64 DirPt4toLine1 = GetDirectionofPointtoSegment(Pt1, Pt2, Pt4);
         Fix64 DirPt1toLine2 = GetDirectionofPointtoSegment(Pt3, Pt4, Pt1);
         Fix64 DirPt2toLine2 = GetDirectionofPointtoSegment(Pt3, Pt4, Pt2);
 
-        if (DirPt3toLine1 > 0 && DirPt4toLine1 < 0 && DirPt1toLine2 > 0 && DirPt2toLine2 < 0) return true;
-        else if (DirPt3toLine1 < 0 && DirPt4toLine1 > 0 && DirPt1toLine2 > 0 && DirPt2toLine2 < 0) return true;
-        else if (DirPt3toLine1 > 0 && DirPt4toLine1 < 0 && DirPt1toLine2 < 0 && DirPt2toLine2 > 0) return true;
-        else if (DirPt3toLine1 < 0 && DirPt4toLine1 > 0 && DirPt1toLine2 < 0 && DirPt2toLine2 > 0) return true;
-        else if (DirPt3toLine1 == 0 && IsPointInRectDefinedbyTwoPoints(Pt1, Pt2, Pt3)) return true;
-        else if (DirPt4toLine1 == 0 && IsPointInRectDefinedbyTwoPoints(Pt1, Pt2, Pt4)) return true;
-        else if (DirPt1toLine2 == 0 && IsPointInRectDefinedbyTwoPoints(Pt3, Pt4, Pt1)) return true;
-        else if (DirPt2toLine2 == 0 && IsPointInRectDefinedbyTwoPoints(Pt3, Pt4, Pt2)) return true;
+        if (DirPt3toLine1 > (Fix64)0 && DirPt4toLine1 < (Fix64)0 && DirPt1toLine2 > (Fix64)0 && DirPt2toLine2 < (Fix64)0) return true;
+        else if (DirPt3toLine1 < (Fix64)0 && DirPt4toLine1 > (Fix64)0 && DirPt1toLine2 > (Fix64)0 && DirPt2toLine2 < (Fix64)0) return true;
+        else if (DirPt3toLine1 > (Fix64)0 && DirPt4toLine1 < (Fix64)0 && DirPt1toLine2 < (Fix64)0 && DirPt2toLine2 > (Fix64)0) return true;
+        else if (DirPt3toLine1 < (Fix64)0 && DirPt4toLine1 > (Fix64)0 && DirPt1toLine2 < (Fix64)0 && DirPt2toLine2 > (Fix64)0) return true;
+        else if (DirPt3toLine1 == (Fix64)0 && IsPointInRectDefinedbyTwoPoints(Pt1, Pt2, Pt3)) return true;
+        else if (DirPt4toLine1 == (Fix64)0 && IsPointInRectDefinedbyTwoPoints(Pt1, Pt2, Pt4)) return true;
+        else if (DirPt1toLine2 == (Fix64)0 && IsPointInRectDefinedbyTwoPoints(Pt3, Pt4, Pt1)) return true;
+        else if (DirPt2toLine2 == (Fix64)0 && IsPointInRectDefinedbyTwoPoints(Pt3, Pt4, Pt2)) return true;
         else return false;
     }
 }
